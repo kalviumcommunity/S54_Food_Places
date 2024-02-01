@@ -2,7 +2,7 @@
   "name": "s54_food_places",
   "version": "1.0.0",
   "description": "Website where People can explore and help people explore different food places in Punjab.",
-  "main": "index.js",
+  "main": "Backend/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
