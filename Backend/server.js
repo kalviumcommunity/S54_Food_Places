@@ -9,6 +9,8 @@ connectionStatus.then(result=>{
     res.send(result?"Connected to DB":"Disconnected");
   });
   
+}).catch(err=>{
+  console.log(err);
 });
 
 app.route("/ping").get((req, res) => {
