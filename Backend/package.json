@@ -4,12 +4,17 @@
   "description": "Website where People can explore and help people explore different food places in Punjab.",
   "main": "Backend/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "devStart": "nodemon server.js"
   },
   "author": "Kalvium",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.4.1",
     "express": "^4.18.2",
+    "mongodb": "^6.3.0",
+    "mongoose": "^8.1.1"
+  },
+  "devDependencies": {
     "nodemon": "^3.0.3"
   }
 }
