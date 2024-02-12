@@ -1,22 +1,23 @@
 const express = require("express");
-const {connect} = require("./db")
+const {connect} = require("./config/db");
+const foodPlacesRoutes = require("./Routes/foodPlacesRoutes");
 const app = express();
 const port = process.env.PORT
 
-const connectionStatus = connect()
-connectionStatus.then(result=>{
-  app.route("/").get((req, res) => {
-    res.send(result?"Connected to DB":"Disconnected");
-  });
-  
-}).catch(err=>{
-  console.log(err);
-});
+connect().then(response=>{
+  app.get('/',(req,res)=>{
+    res.send(response)
+  })
+}).catch(response=>{
+  app.get('/',(req,res)=>{
+    res.send(response)
+  })
+})
 
-app.route("/ping").get((req, res) => {
-  res.send("Hello world, This is ping Route");
-});
+app.use("/api/foodPlaces",foodPlacesRoutes)
 
 app.listen(port, () => {
-  console.log(`App is running on PORT: ${port}`);
+  console.log(`App is running on PORT: ${port}`)
 });
+
+
