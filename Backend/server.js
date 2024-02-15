@@ -1,6 +1,7 @@
 const express = require("express");
 const {connect} = require("./config/db");
 const foodPlacesRoutes = require("./Routes/foodPlacesRoutes");
+const userDataRoutes = require("./Routes/userDataRoutes");
 const app = express();
 const port = process.env.PORT
 
@@ -17,6 +18,7 @@ connect().then(response=>{
 })
 
 app.use("/api/foodplaces",foodPlacesRoutes)
+app.use("/api/userdatas",userDataRoutes)
 
 app.listen(port, () => {
   console.log(`App is running on PORT: ${port}`)
