@@ -12,23 +12,26 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
+  Grid,
 } from "@chakra-ui/react";
 const NavBar = () => {
   return (
     <Box bgGradient='' pt={"2vw"} px={"5vw"} position={"absolute"}>
       <Flex justify={"space-between"} width={"90vw"} align={"center"}>
-        <Heading color={"white"}>FOODISTA</Heading>
-        <Flex width={"13vw"} justify={"space-between"} align={"center"}>
-          <Link textShadow={'0 0 0.5vw black'} color="white" fontSize={"xl"} fontWeight={"semibold"}>
-            Home
-          </Link>
-          <Link textShadow={'0 0 0.5vw black'} color="white" fontSize={"xl"} fontWeight={"semibold"}>
-            About Us
-          </Link>
+        <Flex width={'28vw'} justify={"space-between"} align={"center"}>
+          <Heading color={"white"}>Punjab Eats</Heading>
+          <Flex width={"12vw"} justify={"space-between"} align={"center"}>
+            <Link textShadow={'0 0 0.5vw black'} color="white" fontSize={"xl"} fontWeight={"semibold"}>
+              Home
+            </Link>
+            <Link textShadow={'0 0 0.5vw black'} color="white" fontSize={"xl"} fontWeight={"semibold"}>
+              About Us
+            </Link>
+          </Flex>
         </Flex>
         <Flex>
-            <Button colorScheme="teal">Sign Up</Button>
-            {/* <Menu>
+            <Button bgColor={'#defafa'} color={'teal'} boxShadow={'0 0 0.2vw -0.1vw black'}>Sign Up</Button>
+            {/* <Menu> 
                 <MenuButton rightIcon={<ChevronDownIcon/>} as={Button}>Profile</MenuButton>
                 <MenuList>
                     <MenuItem>Account</MenuItem>
