@@ -9,7 +9,7 @@ const Entity = () => {
     Name: "Kitchen At 95",
     Image:
       "https://media-cdn.tripadvisor.com/media/photo-o/0e/5b/5c/b3/kitchen-at-95-multi-cuisine.jpg",
-    Rating: 4.5,
+    Rating: 5,
     Location: "Ferozepur Road, Ludhiana 141012 India",
     SpendPerPerson: "₹800 - ₹2,000",
     Cuisines: "Chinese, Indian, Asian, Italian, International",
@@ -22,12 +22,12 @@ const Entity = () => {
   return (
     <>
         <Heading textAlign={"center"}>Explore Food Places</Heading>
-        <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden" my={'2vw'} mx={'auto'}>
+        <Box maxW="sm" borderWidth="1px" borderRadius="lg" overflow="hidden" my={'2vw'} mx={'auto'} boxShadow={'0 0 0.5vw #00000026'}>
           <Image src={dummyData.Image} />
     
           <Box p="6">
             <Box display="flex" alignItems="baseline">
-              <Badge borderRadius="full" px="2" colorScheme="teal">
+              <Badge borderRadius="md" px="2" bgColor={'#ddc3ac'} color="#00000099">
                 New
               </Badge>
               <Box
@@ -65,7 +65,7 @@ const Entity = () => {
                 .map((_, i) => (
                   <StarIcon
                     key={i}
-                    color={i < dummyData.Rating ? "teal.500" : "gray.300"}
+                    color={i < dummyData.Rating ? "#ad8f76" : "gray.300"}
                   />
                 ))}
             </Box>
