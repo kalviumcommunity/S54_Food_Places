@@ -1,7 +1,7 @@
 import Entity from "./Components/Entity";
 import Home from "./Components/Home";
 import NavBar from "./Components/NavBar";
-import { Box, Flex } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 
 function App() {
   return (
