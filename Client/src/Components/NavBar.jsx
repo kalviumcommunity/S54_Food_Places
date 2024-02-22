@@ -30,7 +30,7 @@ const NavBar = () => {
           </Flex>
         </Flex>
         <Flex>
-            <Button bgColor={'#defafa'} color={'teal'} boxShadow={'0 0 0.2vw -0.1vw black'}>Sign Up</Button>
+            <Button bgColor={'#ddc3accc'} color={'#00000099'} boxShadow={'0 0 0.2vw -0.1vw black'} _hover={{bgColor: "#ddb99acc"}}>Sign Up</Button>
             {/* <Menu> 
                 <MenuButton rightIcon={<ChevronDownIcon/>} as={Button}>Profile</MenuButton>
                 <MenuList>

@@ -3,7 +3,6 @@ import { Container, Image, Box, Heading, Flex, Button } from "@chakra-ui/react";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 
 import HomeBG from "./../assets/Restuarant_BG.png";
-import "./Home.css";
 
 const Home = () => {
   return (
@@ -16,6 +15,7 @@ const Home = () => {
       backgroundRepeat={"no-repeat"}
       align={"center"}
       borderRadius={'0 0 1vw 1vw'}
+      mb={'3vw'}
     >
       <Flex height={"40%"} direction={"column"} justify={"space-between"}>
         <Heading size={"4xl"} color={"white"}>
