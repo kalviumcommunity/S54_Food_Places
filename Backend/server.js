@@ -3,9 +3,11 @@ const {connect} = require("./config/db");
 const foodPlacesRoutes = require("./Routes/foodPlacesRoutes");
 const userDataRoutes = require("./Routes/userDataRoutes");
 const app = express();
+const cors = require('cors')
 const port = process.env.PORT
 
 app.use(express.json())
+app.use(cors())
 
 connect().then(response=>{
   app.get('/',(req,res)=>{

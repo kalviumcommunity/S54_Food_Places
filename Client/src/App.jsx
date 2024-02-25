@@ -1,3 +1,4 @@
+import AllPlaces from "./Components/AllPlaces";
 import Entity from "./Components/Entity";
 import Home from "./Components/Home";
 import NavBar from "./Components/NavBar";
@@ -8,7 +9,7 @@ function App() {
     <Box>
       <NavBar />
       <Home />
-      <Entity />
+      <AllPlaces/>
     </Box>
   );
 }
