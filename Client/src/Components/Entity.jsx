@@ -3,7 +3,7 @@ import { Badge, Box, Image, Flex, Heading } from "@chakra-ui/react";
 import React from "react";
 
 const Entity = () => {
-  const dummyData = {
+  const data = {
     _id: "65cc4c476fb792c7ef3bdc3c",
     ListingId: 1,
     Name: "Kitchen At 95",
@@ -21,7 +21,6 @@ const Entity = () => {
   };
   return (
     <div>
-      <Heading textAlign={"center"}>Explore Food Places</Heading>
       <Box
         maxW="sm"
         borderWidth="1px"
@@ -31,7 +30,7 @@ const Entity = () => {
         mx={"auto"}
         boxShadow={"0 0 0.5vw #00000026"}
       >
-        <Image src={dummyData.Image} />
+        <Image src={data.Image} />
 
         <Box p="6">
           <Box display="flex" alignItems="baseline">
@@ -51,9 +50,9 @@ const Entity = () => {
               textTransform="uppercase"
               ml="2"
             >
-              {dummyData.OpenHours.includes(",")
+              {data.OpenHours.includes(",")
                 ? "Changes Day to Day"
-                : dummyData.OpenHours}
+                : data.OpenHours}
             </Box>
           </Box>
 
@@ -64,11 +63,11 @@ const Entity = () => {
             lineHeight="tight"
             noOfLines={1}
           >
-            {dummyData.Name}
+            {data.Name}
           </Box>
 
           <Box>
-            {dummyData.SpendPerPerson}
+            {data.SpendPerPerson}
             <Box as="span" color="gray.600" fontSize="sm">
               / person
             </Box>
@@ -80,7 +79,7 @@ const Entity = () => {
               .map((_, i) => (
                 <StarIcon
                   key={i}
-                  color={i < dummyData.Rating ? "#ad8f76" : "gray.300"}
+                  color={i < data.Rating ? "#ad8f76" : "gray.300"}
                 />
               ))}
           </Box>

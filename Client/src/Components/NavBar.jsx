@@ -15,7 +15,7 @@ import {
 } from "@chakra-ui/react";
 const NavBar = () => {
   return (
-    <Box bgGradient="" pt={"2vw"} mx={'5vw'} position={"absolute"}>
+    <Box mt={"2vw"} mx={'5vw'} position={"absolute"}>
       <Flex justify={"space-between"} width={"90vw"} align={"center"}>
         <Flex width={"28vw"} justify={"space-between"} align={"center"}>
           <Heading color={"white"}>Punjab Eats</Heading>
