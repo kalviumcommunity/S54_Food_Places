@@ -1,4 +1,5 @@
 import React from "react";
+import { Link as ReactRouterLink } from 'react-router-dom'
 import {
   Box,
   ButtonGroup,
@@ -38,15 +39,26 @@ const NavBar = () => {
             </Link>
           </Flex>
         </Flex>
-        <Flex>
-          <Button
-            bgColor={"#ddc3accc"}
+        <Flex w={'15vw'} justify={"space-between"}>
+        <ReactRouterLink to={'/userlogin'}>
+            <Button
+              bgColor={"#ddc3accc"}
+              color={"#00000099"}
+              boxShadow={"0 0 0.2vw -0.1vw black"}
+              _hover={{ bgColor: "#ddb99acc" }}
+            >
+              Sign Up
+            </Button>
+          </ReactRouterLink>
+          <ReactRouterLink to={'/post'}>
+            <Button
+            bgColor={"#ffffffcc"}
             color={"#00000099"}
             boxShadow={"0 0 0.2vw -0.1vw black"}
-            _hover={{ bgColor: "#ddb99acc" }}
-          >
-            Sign Up
-          </Button>
+            _hover={{ bgColor: "#d8d8d8cc" }}>
+              Add Place
+            </Button>
+          </ReactRouterLink>
           {/* <Menu> 
                 <MenuButton rightIcon={<ChevronDownIcon/>} as={Button}>Profile</MenuButton>
                 <MenuList>
