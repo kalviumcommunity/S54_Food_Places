@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import AllPlaces from "./Components/AllPlaces";
+import { Routes, Route } from "react-router-dom";
 import axios from "axios";
 import Home from "./Components/Home";
 import NavBar from "./Components/NavBar";
 import { Box } from "@chakra-ui/react";
+import Post from "./Components/Post";
 
 function App() {
   const [data, setData] = useState([]);
@@ -23,9 +24,10 @@ function App() {
   }, []);
   return (
     <Box>
-      <NavBar />
-      <Home />
-      <AllPlaces data={data} fetched={fetched}/>
+      <Routes>
+        <Route path="/" element={<Home data={data} fetched={fetched} />} />
+        <Route path="/post" element={<Post fetchData={fetchData} />} />
+      </Routes>
     </Box>
   );
 }

@@ -1,13 +1,15 @@
 import React from "react";
+import AllPlaces from "./AllPlaces";
 import { Container, Image, Box, Heading, Flex, Button } from "@chakra-ui/react";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 
 import HomeBG from "./../assets/Restuarant_BG.png";
 import NavBar from "./NavBar";
 
-const Home = () => {
+const Home = ({data,fetched}) => {
   return (
     <>
+    <NavBar />
       <Flex
         pt={"3vw"}
         px={"5vw"}
@@ -35,6 +37,7 @@ const Home = () => {
           </Button>
         </Flex>
       </Flex>
+      <AllPlaces data={data} fetched={fetched}/>
     </>
   );
 };

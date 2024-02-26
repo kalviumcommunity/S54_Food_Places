@@ -1,9 +1,5 @@
 import { StarIcon } from "@chakra-ui/icons";
-import {
-  Badge,
-  Box,
-  Image,
-} from "@chakra-ui/react";
+import { Badge, Box, Image } from "@chakra-ui/react";
 import React from "react";
 
 const Entity = ({ data, length }) => {
@@ -46,8 +42,8 @@ const Entity = ({ data, length }) => {
               textTransform="uppercase"
               ml={data.ListingId > length - 5 && "2"}
             >
-              {data.OpenHours.includes(",")
-                ? "Changes Day to Day"
+              {data.OpenHours == "" || data.OpenHours.includes(",")
+                ? "Uncertain"
                 : data.OpenHours}
             </Box>
           </Box>
