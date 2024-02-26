@@ -57,7 +57,7 @@ const deletePlace = async(req, res) => {
         if(!deletePlace){
             res.status(404).json({ message: "Place not Found" })
         }else{
-            res.status(200).json({message: `Place with id ${req.params.id} is deleted`,deletePlace})
+            res.status(200).json({message: `Place named ${deletePlace.Name} is deleted`,deletePlace})
         }
         
     } catch (error) {
