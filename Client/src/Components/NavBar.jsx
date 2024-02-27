@@ -14,6 +14,7 @@ import {
   MenuItem,
   Grid,
 } from "@chakra-ui/react";
+import { AddIcon } from "@chakra-ui/icons";
 const NavBar = () => {
   return (
     <Box mt={"2vw"} mx={'5vw'} position={"absolute"}>
@@ -51,13 +52,14 @@ const NavBar = () => {
             </Button>
           </ReactRouterLink>
           <ReactRouterLink to={'/post'}>
-            <Button
-            bgColor={"#ffffffcc"}
-            color={"#00000099"}
-            boxShadow={"0 0 0.2vw -0.1vw black"}
-            _hover={{ bgColor: "#d8d8d8cc" }}>
-              Add Place
-            </Button>
+              <Button
+              bgColor={"#ffffffcc"}
+              leftIcon={<AddIcon boxSize={'12px'}/>}
+              color={"#00000099"}
+              boxShadow={"0 0 0.2vw -0.1vw black"}
+              _hover={{ bgColor: "#d8d8d8cc" }}>
+                Add Place
+              </Button>
           </ReactRouterLink>
           {/* <Menu> 
                 <MenuButton rightIcon={<ChevronDownIcon/>} as={Button}>Profile</MenuButton>

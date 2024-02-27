@@ -25,7 +25,7 @@ function App() {
   return (
     <Box>
       <Routes>
-        <Route path="/" element={<Home data={data} fetched={fetched} />} />
+        <Route path="/" element={<Home data={data} fetched={fetched} setData={setData} />} />
         <Route path="/post" element={<Post fetchData={fetchData} />} />
       </Routes>
     </Box>

@@ -6,7 +6,7 @@ import { ArrowForwardIcon } from "@chakra-ui/icons";
 import HomeBG from "./../assets/Restuarant_BG.png";
 import NavBar from "./NavBar";
 
-const Home = ({data,fetched}) => {
+const Home = ({data,fetched,setData}) => {
   return (
     <>
     <NavBar />
@@ -37,7 +37,7 @@ const Home = ({data,fetched}) => {
           </Button>
         </Flex>
       </Flex>
-      <AllPlaces data={data} fetched={fetched}/>
+      <AllPlaces data={data} fetched={fetched} setData={setData}/>
     </>
   );
 };

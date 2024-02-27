@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import HomeBG from "./../assets/Restuarant_BG.png";
 import axios from "axios";
 import {
@@ -20,6 +20,7 @@ import {
   VStack,
   ButtonGroup,
   InputRightAddon,
+  Text,
 } from "@chakra-ui/react";
 import { ToastContainer, toast, Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -41,12 +42,19 @@ const Post = ({ fetchData }) => {
   };
   const PostRequest = async (data) => {
     try {
+      if (data.Website.includes("http://")) {
+        data.Website = data.Website.slice(7)
+      } else if(data.Website.includes("https://")) {
+        data.Website = data.Website.slice(8)
+      }
       const res = await axios.post(
         "https://food-places.onrender.com/api/foodplaces",
         {
           ...data,
           PhoneNumber: `+91 ${data.PhoneNumber}`,
           PostedBy: "meghawadhwa12",
+          Email : data.Email==""?"NA":data.Email,
+          Website: `http://${data.Website}`
         }
       );
       setIsPosted(true)
@@ -112,7 +120,7 @@ const Post = ({ fetchData }) => {
           >
             <VStack>
               <FormControl isInvalid={errors.Name}>
-                <FormLabel>Name</FormLabel>
+                <FormLabel>Name <span style={{color: "red"}}>*</span></FormLabel>
                 <Input
                   type="text"
                   placeholder="Enter FoodPlace's Name"
@@ -127,7 +135,7 @@ const Post = ({ fetchData }) => {
                 <FormErrorMessage>{errors.Name?.message}</FormErrorMessage>
               </FormControl>
               <FormControl isInvalid={errors.Location}>
-                <FormLabel>Location</FormLabel>
+                <FormLabel>Location <span style={{color: "red"}}>*</span></FormLabel>
                 <Input
                   type="text"
                   placeholder="Enter FoodPlace's Location"
@@ -138,7 +146,7 @@ const Post = ({ fetchData }) => {
                 <FormErrorMessage>{errors.Location?.message}</FormErrorMessage>
               </FormControl>
               <FormControl isInvalid={errors.SpendPerPerson}>
-                <FormLabel>Spend Per Person</FormLabel>
+                <FormLabel>Spend Per Person <span style={{color: "red"}}>*</span></FormLabel>
                 <InputGroup>
                   <Input
                     type="text"
@@ -162,7 +170,7 @@ const Post = ({ fetchData }) => {
                 />
               </FormControl>
               <FormControl isInvalid={errors.Rating}>
-                <FormLabel>Rating</FormLabel>
+                <FormLabel>Rating <span style={{color: "red"}}>*</span></FormLabel>
                 <Input
                   type="number"
                   placeholder="Provide Rating of the FoodPlace"
@@ -183,7 +191,7 @@ const Post = ({ fetchData }) => {
                 />
               </FormControl>
               <FormControl isInvalid={errors.Image}>
-                <FormLabel>Image</FormLabel>
+                <FormLabel>Image <span style={{color: "red"}}>*</span></FormLabel>
                 <Input
                   type="text"
                   placeholder="Provide Image for the Food Place(Only Link Supported)"
@@ -194,7 +202,7 @@ const Post = ({ fetchData }) => {
                 <FormErrorMessage>{errors.Image?.message}</FormErrorMessage>
               </FormControl>
               <FormControl isInvalid={errors.PhoneNumber}>
-                <FormLabel>Phone Number</FormLabel>
+                <FormLabel>Phone Number <span style={{color: "red"}}>*</span></FormLabel>
                 <InputGroup>
                   <InputLeftAddon>+ 91</InputLeftAddon>
                   <Input
@@ -214,14 +222,15 @@ const Post = ({ fetchData }) => {
                 </FormErrorMessage>
               </FormControl>
               <FormControl isInvalid={errors.Email}>
-                <FormLabel>Email</FormLabel>
-                <Input
-                  type="email"
-                  placeholder="Enter Email"
-                  {...register("Email", {
-                    required: "Email Field is Mandatory",
-                  })}
-                />
+                  <FormLabel>Email</FormLabel>
+                <InputGroup>
+                <InputLeftAddon>http://</InputLeftAddon>
+                  <Input
+                    type="email"
+                    placeholder="Enter Email"
+                    {...register("Email")}
+                  />
+                </InputGroup>
                 <FormErrorMessage>{errors.Email?.message}</FormErrorMessage>
               </FormControl>
               <FormControl>
@@ -252,15 +261,17 @@ const Post = ({ fetchData }) => {
                     Submit
                   </Button>
                 )}
-                <Button
-                  ml={"1vw"}
-                  variant={"outline"}
-                  borderColor={"#ddc3ac"}
-                  borderWidth={"2px"}
-                  _hover={{ bgColor: "#fff2e7cc" }}
-                >
-                  Cancel
-                </Button>
+                <Link to={'/'}>
+                  <Button
+                    ml={"1vw"}
+                    variant={"outline"}
+                    borderColor={"#ddc3ac"}
+                    borderWidth={"2px"}
+                    _hover={{ bgColor: "#fff2e7cc" }}
+                  >
+                    Cancel
+                  </Button>
+                </Link>
               </Flex>
             </VStack>
           </FormControl>
