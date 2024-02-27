@@ -31,6 +31,7 @@ const Entity = ({ data, length,setData,setDeleted,setUpdated }) => {
       const res = await axios.delete(`${API_URI}/${data._id}`);
       setDeleted(res.data.message)
       setData(prev=>prev.filter(e=>e._id !== res.data.deletePlace._id))
+      onClose()
     } catch (error) {}
   };
   const cancelRef = useRef();
@@ -128,7 +129,6 @@ const Entity = ({ data, length,setData,setDeleted,setUpdated }) => {
                         </Button>
                         <Button colorScheme="red" onClick={()=>{
                           handleDelete()
-                          onClose()
                         }} ml={3}>
                           Delete
                         </Button>
