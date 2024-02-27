@@ -49,9 +49,6 @@ const UpdateModal = ({ data, setUpdated, setData }) => {
         `https://food-places.onrender.com/api/foodplaces/${data._id}`,
         {
           ...formData,
-          PhoneNumber: `+91 ${formData.PhoneNumber}`,
-          Email: formData.Email == "" ? "NA" : formData.Email,
-          Website: `http://${formData.Website}`,
         }
       );
       setPatching(false)
@@ -152,7 +149,7 @@ const UpdateModal = ({ data, setUpdated, setData }) => {
                   type="text"
                   placeholder="Enter Cuisines avaialble in the FoodPlace"
                   {...register("Cuisines")}
-                  defaultValue={data.Cuisines}
+                  defaultValue={data.Cuisines == "NA" ? "" : data.Cuisines}
                 />
               </FormControl>
               <FormControl>
@@ -161,7 +158,7 @@ const UpdateModal = ({ data, setUpdated, setData }) => {
                   type="text"
                   placeholder="Enter the time when Foodplace is Open"
                   {...register("OpenHours")}
-                  defaultValue={data.OpenHours}
+                  defaultValue={data.OpenHours == "NA" ? "" : data.OpenHours}
                 />
               </FormControl>
               <FormControl isInvalid={errors.Image}>
@@ -218,11 +215,7 @@ const UpdateModal = ({ data, setUpdated, setData }) => {
                   placeholder="Enter the time when Foodplace is Open"
                   {...register("Website")}
                   defaultValue={
-                    data.Website.includes("https://")
-                      ? data.Website.slice(8)
-                      : data.Website.includes("http://")
-                      ? data.Website.slice(7)
-                      : data.Website
+                    data.Website == "NA" ? "" : data.Website
                   }
                 />
               </FormControl>

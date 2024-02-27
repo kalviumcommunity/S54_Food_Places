@@ -51,10 +51,7 @@ const Post = ({ fetchData }) => {
         "https://food-places.onrender.com/api/foodplaces",
         {
           ...data,
-          PhoneNumber: `+91 ${data.PhoneNumber}`,
           PostedBy: "meghawadhwa12",
-          Email : data.Email==""?"NA":data.Email,
-          Website: `http://${data.Website}`
         }
       );
       setIsPosted(true)
