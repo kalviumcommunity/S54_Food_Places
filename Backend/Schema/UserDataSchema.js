@@ -6,7 +6,7 @@ const UserDataSchema = mongoose.Schema({
     Password: {type:String,required: [true, "Password can't be Empty"]},
     Favourites: [String],
     Posts: [String],
-    Username: {type:String,required: [true, "Please add a Username"]},
+    Username: {type:String,required: [true, "Please add a Username"],unique:[true,"Username is already taken"]},
 })
 
 const UserDataModel = mongoose.model("userdatas",UserDataSchema)
