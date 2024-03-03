@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useLayoutEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import HomeBG from "./../assets/Restuarant_BG.png";
@@ -24,9 +24,11 @@ import {
 } from "@chakra-ui/react";
 import { ToastContainer, toast, Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { UserContext } from "./Context/AuthContext";
 
 const Post = ({ fetchData }) => {
   const [isPosted, setIsPosted] = useState(true);
+  const { isLoggedin, setIsLoggedin } = useContext(UserContext)
   const {
     register,
     handleSubmit,
@@ -35,6 +37,11 @@ const Post = ({ fetchData }) => {
   } = useForm();
 
   const navigate = useNavigate();
+  useLayoutEffect(()=>{
+    if (!isLoggedin) {
+      navigate('/login')
+    }
+  },[])
 
   const formSubmit = (data) => {
     setIsPosted(false)
@@ -220,14 +227,11 @@ const Post = ({ fetchData }) => {
               </FormControl>
               <FormControl isInvalid={errors.Email}>
                   <FormLabel>Email</FormLabel>
-                <InputGroup>
-                <InputLeftAddon>http://</InputLeftAddon>
                   <Input
                     type="email"
                     placeholder="Enter Email"
                     {...register("Email")}
                   />
-                </InputGroup>
                 <FormErrorMessage>{errors.Email?.message}</FormErrorMessage>
               </FormControl>
               <FormControl>
