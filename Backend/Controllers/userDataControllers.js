@@ -1,5 +1,6 @@
 const UserValidationSchema = require("../Validation/UserValidationShema");
 const UserDataModel = require("./../Schema/UserDataSchema");
+const {sha512} = require("js-sha512")
 
 const getAllUsers = async (req, res) => {
   try {
@@ -36,11 +37,12 @@ const createUser = async (req, res) => {
         const postUser = await UserDataModel.create({
           Name,
           Email,
-          Password,
+          Password: sha512(Password),
           Favourites: [],
           Posts: [],
           Username,
         });
+        
         res.status(201).json({ message: "User Created", postUser });
     }
   } catch (error) {

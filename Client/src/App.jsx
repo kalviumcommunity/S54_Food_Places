@@ -5,6 +5,8 @@ import Home from "./Components/Home";
 import NavBar from "./Components/NavBar";
 import { Box } from "@chakra-ui/react";
 import Post from "./Components/Post";
+import SignUp from "./Components/SignUp";
+import Login from "./Components/Login";
 
 function App() {
   const [data, setData] = useState([]);
@@ -27,6 +29,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home data={data} fetched={fetched} setData={setData} />} />
         <Route path="/post" element={<Post fetchData={fetchData} />} />
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/signup" element={<SignUp/>}/>
       </Routes>
     </Box>
   );
