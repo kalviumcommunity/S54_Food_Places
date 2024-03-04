@@ -25,6 +25,7 @@ import {
 import { ToastContainer, toast, Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { UserContext } from "./Context/AuthContext";
+import { getCookie } from "./ManageCookie";
 
 const Post = ({ fetchData }) => {
   const [isPosted, setIsPosted] = useState(true);
@@ -54,11 +55,13 @@ const Post = ({ fetchData }) => {
       } else if(data.Website.includes("https://")) {
         data.Website = data.Website.slice(8)
       }
+      const userName = getCookie("Username")
+      console.log(userName);
       const res = await axios.post(
         "https://food-places.onrender.com/api/foodplaces",
         {
           ...data,
-          PostedBy: "meghawadhwa12",
+          PostedBy: userName,
         }
       );
       setIsPosted(true)
