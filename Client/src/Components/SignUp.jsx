@@ -33,7 +33,7 @@ const SignUp = () => {
   const [show, setShow] = useState(false);
   const [error,setError] = useState("")
   const [showRepeat, setShowRepeat] = useState(false);
-  const {setIsLoggedin} = useContext(UserContext)
+  const {setIsLoggedin,setUsername} = useContext(UserContext)
   const navigate = useNavigate()
 
   const {
@@ -52,6 +52,7 @@ const SignUp = () => {
       const res = await axios.post(User_Api_Uri,{Name,Username,Password,Email})
       setCookie("Username",res.data.AccessToken)
       setIsLoggedin(true)
+      setUsername(Username)
       toast.success(`User with username ${Username} is created`, {
         position: "top-right",
         autoClose: 5000,

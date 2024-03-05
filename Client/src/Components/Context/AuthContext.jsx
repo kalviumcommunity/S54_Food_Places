@@ -5,8 +5,9 @@ export const UserContext = createContext();
 
 const AuthContext = ({ children }) => {
   const [isLoggedin, setIsLoggedin] = useState(false);
+  const [Username,setUsername] = useState("")
   return (
-    <UserContext.Provider value={{ isLoggedin, setIsLoggedin }}>
+    <UserContext.Provider value={{ isLoggedin, setIsLoggedin,Username,setUsername }}>
       {children}
     </UserContext.Provider>
   );
