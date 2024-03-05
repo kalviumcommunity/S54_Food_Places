@@ -1,6 +1,8 @@
 const UserValidationSchema = require("../Validation/UserValidationShema");
 const UserDataModel = require("./../Schema/UserDataSchema");
 const {sha512} = require("js-sha512")
+const jwt = require('jsonwebtoken')
+require('dotenv').config()
 
 const getAllUsers = async (req, res) => {
   try {
@@ -18,7 +20,7 @@ const getOneUser = async (req, res) => {
     if (OneUser.length === 0) {
       res.status(404).json({ message: "User not Found",OneUser });
     } else {
-      res.status(200).json(OneUser);
+      res.status(200).json({...OneUser,AccessToken:jwt.sign(OneUser.Username,process.env.SECRET)});
     }
   } catch (error) {
     res.status(500).json({ message: "Unable to fetch Data" });
@@ -40,10 +42,10 @@ const createUser = async (req, res) => {
           Password: sha512(Password),
           Favourites: [],
           Posts: [],
-          Username,
+          Username: Username,
         });
         
-        res.status(201).json({ message: "User Created", postUser });
+        res.status(201).json({ message: "User Created", postUser,AccessToken: jwt.sign(Username,process.env.SECRET) });
     }
   } catch (error) {
     errorName = Object.keys(error.keyPattern)
@@ -55,7 +57,7 @@ const updateUser = async (req, res) => {
   try {
     // console.log(req.params.id,req.body);
     const patchUser = await UserDataModel.findOneAndUpdate(
-      { Username: req.params.id },
+      { Username: jwt.sign(req.params.id,process.env.SECRET) },
       { $set: req.body },
       { new: false }
     );
@@ -78,7 +80,7 @@ const updateUser = async (req, res) => {
 const deleteUser = async (req, res) => {
   try {
     const deleteUser = await UserDataModel.findOneAndDelete({
-      Username: req.params.id,
+      Username: jwt.sign(req.params.id,process.env.SECRET),
     });
     if (!deleteUser) {
       res.status(404).json({ message: "User not Found" });
