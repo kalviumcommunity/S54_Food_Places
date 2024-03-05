@@ -50,21 +50,22 @@ const SignUp = () => {
     try {
       const {Name,Username,Password,Email} = data
       const res = await axios.post(User_Api_Uri,{Name,Username,Password,Email})
-      setCookie("Username",Username)
-      setIsLoggedin(true)
-      toast.success(`User with username ${Username} is created`, {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        transition: Bounce,})
-        setTimeout(() => {
-          navigate("/");
-        }, 4000);
+      // setCookie("Username",)
+      // setIsLoggedin(true)
+      console.log(res);
+      // toast.success(`User with username ${Username} is created`, {
+      //   position: "top-right",
+      //   autoClose: 5000,
+      //   hideProgressBar: false,
+      //   closeOnClick: true,
+      //   pauseOnHover: false,
+      //   draggable: true,
+      //   progress: undefined,
+      //   theme: "light",
+      //   transition: Bounce,})
+      //   setTimeout(() => {
+      //     navigate("/");
+      //   }, 4000);
     } catch (error) {
       setError(error.response.data.errorMessage);
     }
