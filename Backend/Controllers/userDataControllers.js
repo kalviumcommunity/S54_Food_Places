@@ -17,10 +17,11 @@ const getOneUser = async (req, res) => {
     const OneUser = await UserDataModel.find({
       Username: req.params.id,
     }).exec();
+    console.log(OneUser);
     if (OneUser.length === 0) {
       res.status(404).json({ message: "User not Found",OneUser });
     } else {
-      res.status(200).json({OneUser,AccessToken:jwt.sign(OneUser.Username,process.env.SECRET)});
+      res.status(200).json({OneUser,AccessToken:jwt.sign(OneUser[0].Username,process.env.SECRET)});
     }
   } catch (error) {
     res.status(500).json({ message: "Unable to fetch Data" });
@@ -42,7 +43,7 @@ const createUser = async (req, res) => {
           Password: sha512(Password),
           Favourites: [],
           Posts: [],
-          Username: Username,
+          Username,
         });
         
         res.status(201).json({ message: "User Created", postUser,AccessToken: jwt.sign(Username,process.env.SECRET) });
