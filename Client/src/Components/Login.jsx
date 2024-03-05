@@ -49,8 +49,8 @@ const Login = () => {
   } = useForm();
   useEffect(()=>{
     if(isfetched){
-      if(data.Password === password){
-        setCookie("Username",data.Username)
+      if(data.OneUser[0].Password === password){
+        setCookie("Username",data.AccessToken)
         setIsLoggedin(true)
         setError({})
         navigate('/')
@@ -64,9 +64,10 @@ const Login = () => {
   const fetchUser = async (formdata) => {
     try {
       const res = await axios.get(`${User_Api_Uri}/${formdata.Username}`);
+      console.log(res.data);
       const password = sha512(formdata.Password) 
       setPassword(password) 
-      setData(res.data[0]);
+      setData(res.data);
       setIsFetched(true)
     } catch (error) {
       setError(error.response.data)
