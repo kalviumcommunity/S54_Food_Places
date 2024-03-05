@@ -20,7 +20,7 @@ const getOneUser = async (req, res) => {
     if (OneUser.length === 0) {
       res.status(404).json({ message: "User not Found",OneUser });
     } else {
-      res.status(200).json({...OneUser,AccessToken:jwt.sign(OneUser.Username,process.env.SECRET)});
+      res.status(200).json({OneUser,AccessToken:jwt.sign(OneUser.Username,process.env.SECRET)});
     }
   } catch (error) {
     res.status(500).json({ message: "Unable to fetch Data" });
