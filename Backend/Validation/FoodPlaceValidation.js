@@ -6,11 +6,11 @@ const FoodPlaceValidationSchema = Joi.object({
     Rating: Joi.string(),
     Location: Joi.string().required(),
     SpendPerPerson: Joi.string().required(),
-    Cuisines: Joi.string(),
-    OpenHours: Joi.string(),
+    Cuisines: Joi.string().allow(''),
+    OpenHours: Joi.string().allow(''),
     PhoneNumber: Joi.string().required(),
-    Website: Joi.string(),
-    Email: Joi.string(),
+    Website: Joi.string().allow(''),
+    Email: Joi.string().allow(''),
     PostedBy: Joi.string().required()
 })
 

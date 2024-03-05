@@ -17,7 +17,6 @@ const getOneUser = async (req, res) => {
     const OneUser = await UserDataModel.find({
       Username: req.params.id,
     }).exec();
-    console.log(OneUser);
     if (OneUser.length === 0) {
       res.status(404).json({ message: "User not Found",OneUser });
     } else {

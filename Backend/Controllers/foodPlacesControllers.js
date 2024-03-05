@@ -28,9 +28,11 @@ const createPlace = async (req, res) => {
       abortEarly: false,
     });
     if (error) {
+      console.log("error: ", error);
       const Errors = error.details.map(err=>err.message)
       res.status(400).json({ error: Errors });
     }else{
+      console.log("value: ",value);
       const count = await FoodPlacesModel.countDocuments({}).exec();
       const {
         Name,
