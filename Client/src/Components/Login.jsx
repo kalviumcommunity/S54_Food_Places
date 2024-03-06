@@ -38,7 +38,7 @@ const Login = () => {
   const [error,setError] = useState({})
   const [isfetched,setIsFetched] = useState(false)
   const [password,setPassword] = useState("")
-  const {setIsLoggedin} = useContext(UserContext)
+  const {setIsLoggedin,setUsername} = useContext(UserContext)
   const navigate = useNavigate()
   const User_Api_Uri = import.meta.env.VITE_USER_API_URI;
   const {
@@ -52,6 +52,7 @@ const Login = () => {
       if(data.OneUser[0].Password === password){
         setCookie("Username",data.AccessToken)
         setIsLoggedin(true)
+        setUsername(data.OneUser[0].Username)
         setError({})
         navigate('/')
       }
@@ -63,6 +64,7 @@ const Login = () => {
 
   const fetchUser = async (formdata) => {
     try {
+      setIsFetched(false)
       const res = await axios.get(`${User_Api_Uri}/${formdata.Username}`);
       console.log(res.data);
       const password = sha512(formdata.Password) 

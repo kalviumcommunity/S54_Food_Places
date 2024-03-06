@@ -29,7 +29,7 @@ import { getCookie } from "./ManageCookie";
 
 const Post = ({ fetchData }) => {
   const [isPosted, setIsPosted] = useState(true);
-  const { isLoggedin, setIsLoggedin } = useContext(UserContext)
+  const { isLoggedin, setIsLoggedin,Username } = useContext(UserContext)
   const {
     register,
     handleSubmit,
@@ -43,8 +43,10 @@ const Post = ({ fetchData }) => {
       navigate('/login')
     }
   },[])
+  useEffect(()=>console.log("userName: ", Username))
 
   const formSubmit = (data) => {
+    console.log(data);
     setIsPosted(false)
     PostRequest(data);
   };
@@ -55,13 +57,11 @@ const Post = ({ fetchData }) => {
       } else if(data.Website.includes("https://")) {
         data.Website = data.Website.slice(8)
       }
-      const userName = getCookie("Username")
-      console.log(userName);
       const res = await axios.post(
         "https://food-places.onrender.com/api/foodplaces",
         {
           ...data,
-          PostedBy: userName,
+          PostedBy: Username,
         }
       );
       setIsPosted(true)
@@ -83,6 +83,7 @@ const Post = ({ fetchData }) => {
       fetchData();
     } catch (error) {
       console.log("error", error);
+      setIsPosted(true)
       toast.error(error.message, {
         position: "top-right",
         autoClose: 5000,
